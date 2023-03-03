@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #cce276;
+    font-family: 'Fredoka One', cursive;
+}
+
+.game-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#start-button {
+    position: absolute;
+    top: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+	padding:16px 31px;
+    border: none;
+	border-radius:28px;
+	background-color: #b1ce56;
+	box-shadow: 0px 9px 10px 0px #858585;
+	color:#2cbed8;
+	cursor:pointer;
+    font-family: 'Fredoka One', cursive;
+    font-size: 24px;
+    transition: background-color 1s, color 1s;
+}
+#start-button:hover {
+	background-color:#2b2b2b;
+    color: white;
+}
+
+#start-button:active {
+    position:absolute;
+	top: 251px;
+}
+
+
+
+.game-container .background-image {
+    width: 90%;
+    height: 90%;
+    background-image: url(../img/CampoFioritoBG.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
