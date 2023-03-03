@@ -10,46 +10,111 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 - con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe; 
 */
 
+// Collego gli elementi del DOM
 let startButtonEl = document.getElementById('start-button');
 let gridEl = document.getElementById('grid');
+let difficultEl = document.getElementById('difficult');
 
+// Aggiungo una variabile sentinella che indica se la griglia sia già stata generata, e la inizializzo su false
 let gridGen = false;
 
-startButtonEl.addEventListener('click', function () {
-
-    if (!gridGen) {
-        gridEl.style.display = 'flex';
-
-        for (let i = 1; i <= 100; i++) {
-
-            let squareEl = createSquare(i, 10, 10);
-
-            gridEl.append(squareEl);
-            squareEl.addEventListener('click', function () {
-
-                squareEl.classList.toggle('active');
-                console.log(i);
-
-            });
-        }
-
-        gridGen = true;
-    }
+// Evento che gestisce la difficoltà, al click resetta i parametri nascondendo la griglia e svuotando il suo contenuto, aggiornando la variabile sentinella in false, qualora ci fosse una griglia attiva
+difficultEl.addEventListener('click', function () {
+    gridEl.style.display = 'none';
+    gridEl.innerHTML = '';
+    gridGen = false;
 });
 
+// Evento che gestisce il pulsante start
+startButtonEl.addEventListener('click', function () {
+
+    // Dopo l'avvio viene mostrato il contenitore della griglia
+    gridEl.style.display = 'flex';
+
+    // A seconda del livello selezionato, il numero di quadrati della griglia cambia, richiamando dentro un ciclo for la funzione che crea un quadrato, inserendolo dentro il contenitore della griglia
+    if (difficultEl.value === '1') {
+
+        if (!gridGen) {
+
+            for (let i = 1; i <= 100; i++) {
+
+                let squareEl = createSquare('', 10, 10);
+
+                gridEl.append(squareEl);
+                squareEl.addEventListener('click', function () {
+
+                    // Evento che gestisce il clic sulla casella, mostrando in console il rispettivo numero
+                    squareEl.classList.toggle('active');
+                    console.log(i);
+
+                });
+            }
+
+            // Aggiorna la variabile sentinella, mostrando che la griglia è stata creata
+            gridGen = true;
+        }
+
+    } else if (difficultEl.value === '2') {
+
+        if (!gridGen) {
+
+            for (let i = 1; i <= 81; i++) {
+
+                let squareEl = createSquare('', 9, 10);
+
+                gridEl.append(squareEl);
+                squareEl.addEventListener('click', function () {
+
+                    squareEl.classList.toggle('active');
+                    console.log(i);
+
+                });
+            }
+
+            gridGen = true;
+
+        }
+
+    } else if (difficultEl.value === '3') {
+
+        if (!gridGen) {
+
+            for (let i = 1; i <= 49; i++) {
+
+                let squareEl = createSquare('', 7, 10);
+
+                gridEl.append(squareEl);
+                squareEl.addEventListener('click', function () {
+
+                    squareEl.classList.toggle('active');
+                    console.log(i);
+
+                });
+            }
+
+            gridGen = true;
+
+        }
+
+    }
 
 
+
+
+});
+
+// La funzione mi permette di creare un quadrato dalla grandezza variabile in base al numero di colonne utilizzate nella griglia e il gap dato
 function createSquare(squareNum, colNum, gap) {
 
-    let squareEl = document.createElement('div');
+    let square = document.createElement('div');
 
-    squareEl.style.width = `calc(100% / ${colNum} - ${gap}px)`;
-    squareEl.style.height = `calc(100% / ${colNum} - ${gap}px)`;
-    squareEl.style.textAlign = 'center';
-    squareEl.classList.add('square');
-    squareEl.textContent = squareNum;
+    square.style.width = `calc(100% / ${colNum} - ${gap}px)`;
+    square.style.height = `calc(100% / ${colNum} - ${gap}px)`;
+    square.style.textAlign = 'center';
+    square.classList.add('square');
+    square.textContent = squareNum;
 
-    return squareEl;
+    return square;
 }
 
 

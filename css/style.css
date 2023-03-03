@@ -92,7 +92,7 @@ body {
     background-color: rgba(61, 196, 102, 0.4);
     border: 5px solid #b0ce565e;
     border-radius: 50px;
-    animation: myAnim 2s ease 0s 1 normal forwards;
+    animation: myAnim1 2s ease 0s 1 normal forwards;
 }
 
 
@@ -105,9 +105,14 @@ body {
 
 #grid .active {
     background-color: #2cbed8;
+    animation: myAnim2 .6s ease 0s 1 normal forwards;
 }
 
-@keyframes myAnim {
+#grid .square:hover {
+    cursor: pointer;
+}
+
+@keyframes myAnim1 {
 	0% {
 		transform: scale3d(1, 1, 1);
 	}
@@ -134,5 +139,17 @@ body {
 
 	100% {
 		transform: scale3d(1, 1, 1);
+	}
+}
+
+@keyframes myAnim2 {
+	0% {
+		opacity: 0;
+		transform: scale(0.6);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
 	}
 }
