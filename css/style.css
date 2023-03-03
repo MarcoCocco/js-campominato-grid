@@ -97,12 +97,14 @@ body {
 
 
 #grid .square {
-    width: calc(100% / 7 - 10px);
-    height: calc(100% / 7 - 10px);
     background-color: #b1ce56;
     border: 1px solid #d0e78a;
     border-radius: 15px;
     box-shadow: 5px 3px 1px #7b8a4e;
+}
+
+#grid .active {
+    background-color: #2cbed8;
 }
 
 @keyframes myAnim {
